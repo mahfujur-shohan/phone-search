@@ -9,7 +9,7 @@ const displayPhones = (phones) => {
     // console.log(phones);
     const phoneContainer = document.getElementById('phone-container');
     for(const phone of phones) {
-        console.log(phone);
+        // console.log(phone);
         const div = document.createElement('div');
         div.classList.add('col');
         div.innerHTML = `
@@ -30,7 +30,12 @@ document.getElementById('search-btn').addEventListener('click', () => {
     const phoneInputValue = phoneInputText.value;
     const phoneContainer = document.getElementById('phone-container');
     phoneContainer.textContent = '';
-    fetchPhonesApi(phoneInputValue);
+    if(phoneInputValue === '') {
+        console.log('no phone found');
+    }
+    else {
+        fetchPhonesApi(phoneInputValue);
+    }
     //clear input field
     phoneInputText.value = '';
 })
