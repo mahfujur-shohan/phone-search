@@ -16,8 +16,8 @@ const displayPhones = (phones) => {
             <div class="card h-100">
                 <img src="${phone.image}" class="card-img-top" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <h5 class="card-title">${phone.brand}</h5>
+                    <p class="card-text">${phone.phone_name}</p>
                 </div>
             </div>
         `;
@@ -25,4 +25,12 @@ const displayPhones = (phones) => {
     }
 }
 
-fetchPhonesApi('iphone')
+document.getElementById('search-btn').addEventListener('click', () => {
+    const phoneInputText = document.getElementById('phone-input');
+    const phoneInputValue = phoneInputText.value;
+    const phoneContainer = document.getElementById('phone-container');
+    phoneContainer.textContent = '';
+    fetchPhonesApi(phoneInputValue);
+    //clear input field
+    phoneInputText.value = '';
+})
